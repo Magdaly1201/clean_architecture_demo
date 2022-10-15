@@ -10,10 +10,6 @@ public class Person {
     private Book book;
     private Film film;
 
-    public Person(Long dni, String name) {
-        this.dni = dni;
-        this.name = name;
-    }
 
     public Long getDni() {
         return dni;

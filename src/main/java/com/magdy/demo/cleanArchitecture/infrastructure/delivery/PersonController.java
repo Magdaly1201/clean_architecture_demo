@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/person")
 public class PersonController {
@@ -31,5 +33,10 @@ public class PersonController {
     @ResponseStatus(HttpStatus.CREATED)
     public Person create(@RequestBody PersonRequest personRequest){
         return personEndpoints.create(personRequest);
+    }
+
+    @GetMapping
+    public List<Person> getAll(){
+        return personEndpoints.getAll();
     }
 }

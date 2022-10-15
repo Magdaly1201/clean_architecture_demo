@@ -6,6 +6,9 @@ import com.magdy.demo.cleanArchitecture.core.person.model.PersonRequest;
 import com.magdy.demo.cleanArchitecture.core.person.port.PersonRepository;
 import com.magdy.demo.cleanArchitecture.infrastructure.repository.dao.PersonDao;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class PersonAdapterRepository implements PersonRepository {
 
     private final PersonDao personDao;
@@ -26,4 +29,11 @@ public class PersonAdapterRepository implements PersonRepository {
     public Person save(PersonRequest personRequest) {
         return mapper.toDTO(personDao.save(mapper.toEntity(personRequest)));
     }
+
+    @Override
+    public List<Person> findAll() {
+        return personDao.findAll().stream().map(this.mapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
 }

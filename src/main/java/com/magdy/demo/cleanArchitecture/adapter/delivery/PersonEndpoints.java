@@ -4,6 +4,8 @@ import com.magdy.demo.cleanArchitecture.core.person.model.Person;
 import com.magdy.demo.cleanArchitecture.core.person.model.PersonRequest;
 import com.magdy.demo.cleanArchitecture.core.person.service.PersonService;
 
+import java.util.List;
+
 public class PersonEndpoints {
 
     private final PersonService personService;
@@ -18,5 +20,9 @@ public class PersonEndpoints {
 
     public Person create(PersonRequest personRequest) {
         return personService.create(personRequest);
+    }
+
+    public List<Person> getAll(){
+        return personService.getAll();
     }
 }
